@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivityNav"
+    android:background="#d6d8d7"
 
     tools:showIn="@layout/app_bar_main">
 
@@ -27,9 +28,9 @@
         android:id="@+id/panicButton"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/images"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/btn_panic"
         />
 
 </RelativeLayout>

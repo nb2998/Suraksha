@@ -5,45 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartTripActivity"
+    android:background="#25282E"
     android:orientation="vertical">
 
     <Spinner
         android:id="@+id/spinnerStart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+        android:elevation="20dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        android:layout_margin="5dp"/>
+        android:backgroundTint="#FEF7E8"
+        android:layout_margin="20dp"/>
 
     <Spinner
         android:id="@+id/spinnerDestination"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        android:layout_margin="5dp"/>
+        android:backgroundTint="#FEF7E8"
+        android:layout_margin="20dp"/>
 
     <Spinner
         android:id="@+id/spinnerTransportMode"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        android:layout_margin="5dp"/>
+        android:backgroundTint="#FEF7E8"
+        android:layout_margin="20dp"/>
 
     <EditText
         android:id="@+id/etVehicleNo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_margin="5dp"
+        android:textColorHint="#FEF7E8"
+
         android:hint="Enter Vehicle Number"/>
 
     <Button
         android:id="@+id/btnEstimate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
         android:layout_gravity="center"
-        android:text="Estimate Time"
-        android:layout_margin="5dp"/>
+        android:layout_margin="20dp"
+        android:background="#FEF7E8"
+        android:text="Estimate Time" />
 
 </LinearLayout>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FEF7E8"
     tools:context=".OngoingTripActivity">
 
     <TextView
@@ -13,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="#25282E"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="Estimated time : 40 mins" />
@@ -26,22 +27,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="140dp"
         android:gravity="center"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="#25282E"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="@string/estimated_arrival" />
 
     <Button
         android:id="@+id/btnEndTrip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="75dp"
-        android:layout_marginEnd="31dp"
-        android:textSize="24sp"
-        android:text="End trip" />
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_centerInParent="true"
+        android:text="End trip"
+        android:textColor="#FEF7E8"
+        android:background="#25282E"
+        android:textSize="24sp" />
 
 </RelativeLayout>
