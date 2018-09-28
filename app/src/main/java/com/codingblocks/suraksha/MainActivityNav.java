@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -31,11 +32,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codingblocks.suraksha.Models.AddedContacts;
 import com.codingblocks.suraksha.Models.Contact;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -53,7 +56,7 @@ public class MainActivityNav extends AppCompatActivity
 
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
 
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+//    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
 
     private boolean mAlreadyStartedService = false;
     MediaPlayer mediaPlayer;
@@ -67,7 +70,7 @@ public class MainActivityNav extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mediaPlayer = MediaPlayer.create(this, R.raw.girlshout);
-        ImageButton panicButton = findViewById(R.id.panicButton);
+        final ImageButton panicButton = findViewById(R.id.panicButton);
 
         panicButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -106,7 +109,7 @@ public class MainActivityNav extends AppCompatActivity
 
                 String phoneNo = "8851735067";
                 String message = "https://www.google.com/maps/@28.7298838,76.7325634,11z";
-                sendSMS(phoneNo, message);
+                smsSendMessage(panicButton);
 
             }
         });
@@ -124,19 +127,34 @@ public class MainActivityNav extends AppCompatActivity
 
     }
 
-    private void sendSMS(String phoneNo, String message) {
-
-        Log.e(TAG, "sendSMS: --" + message);
-
-//        PendingIntent pi = PendingIntent.getActivity(this, 0,
-//                new Intent(this, MainActivityNav.class), 0);
-        SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNo, null, message, null, null);
-//    }
 
 
+    public void smsSendMessage(View view) {
 
+        String smsNumber = String.format("smsto: %s",
+               "8851735067");
+
+
+//        String smsNumber = String.format("smsto: %s",
+//                );
+
+
+
+        String sms = "I am in trouble . Please help me out! My current location is :- \n\n https://www.google.com/maps/@28.7298838,76.7325634,11z";
+        // Create the intent.
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+        // Set the data for the intent as the phone number.
+        smsIntent.setData(Uri.parse(smsNumber));
+        // Add the message (sms) with the key ("sms_body").
+        smsIntent.putExtra("sms_body", sms);
+        // If package resolves (target app installed), send intent.
+        if (smsIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(smsIntent);
+        } else {
+            Log.d(TAG, "Can't resolve app for ACTION_SENDTO Intent");
+        }
     }
+
 
 
     private void playsound() {
