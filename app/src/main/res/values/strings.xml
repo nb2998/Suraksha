@@ -11,5 +11,16 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
+
+
+    <string name="permission_rationale">Please grant location permission to start the service</string>
+    <string name="permission_denied_explanation">You have not granted location permission. So the service cannot be started.</string>
+    <string name="settings">settings</string>
+    <string name="title_alert_no_intenet">No internet</string>
+    <string name="msg_alert_no_internet">Please make sure that you have active internet connection.</string>
+    <string name="no_google_playservice_available">No Google Playservice found. Please install it.</string>
+    <string name="msg_location_service_not_started">Location Tracking Not Started</string>
+    <string name="msg_location_service_started">Location Tracking Started</string>
+    <string name="btn_label_refresh">Refresh</string>
     <string name="API">api_key</string>
 </resources>
