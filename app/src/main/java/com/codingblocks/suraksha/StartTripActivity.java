@@ -1,6 +1,7 @@
 package com.codingblocks.suraksha;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +34,7 @@ public class StartTripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_trip);
 
         final Spinner startDropdown = findViewById(R.id.spinnerStart);
-        Spinner endDropdown = findViewById(R.id.spinnerDestination);
+        final Spinner endDropdown = findViewById(R.id.spinnerDestination);
         tvTime = findViewById(R.id.tvTime);
         Button btnEstimate = findViewById(R.id.btnEstimate);
         final LatLongs[] items = new LatLongs[]{
@@ -59,20 +60,21 @@ public class StartTripActivity extends AppCompatActivity {
         btnEstimate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fetchRouteDetails(getApplicationContext(), items[startDropdown.getSelectedItemPosition()].getLongitude(), items[startDropdown.getSelectedItemPosition()].getLatitude());
+                fetchRouteDetails(getApplicationContext(), items[startDropdown.getSelectedItemPosition()].getLatitude()+","+items[startDropdown.getSelectedItemPosition()].getLongitude(), items[endDropdown.getSelectedItemPosition()].getLatitude()+","+items[endDropdown.getSelectedItemPosition()].getLongitude());
             }
         });
     }
 
 
-    public void fetchRouteDetails(Context context, String longitude, String latitude) {
+    public void fetchRouteDetails(Context context, String start, String end) {
         String baseUrl = "https://api.tomtom.com/routing/1/calculateRoute/";
-        String latitudes="28.677050,77.112090:";
-        String longitudes = "28.645380,77.203160/";
-        String json = "jsonp?key=";
+//        String start="28.677050,77.112090:";
+//        String longitudes = "28.645380,77.203160";
+        String json = "/jsonp?key=";
         String apiKey = context.getString(R.string.api_key);
-        String url = baseUrl+latitudes+longitudes+json+apiKey;
+        String url = baseUrl+start+":"+end+json+apiKey;
 
+        Log.d(TAG, "fetchRouteDetails: "+url);
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(url)
@@ -96,7 +98,12 @@ public class StartTripActivity extends AppCompatActivity {
                         StartTripActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                tvTime.setText("Estimated time is : "+ routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds()+" seconds");
+//                                tvTime.setText("Estimated time is : "+ routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds()+" seconds");
+                                Log.d(TAG, "run: "+routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds()+" seconds");
+
+                                Intent ongoingIntent = new Intent(StartTripActivity.this, OngoingTripActivity.class);
+                                ongoingIntent.putExtra(getString(R.string.estimated_time), routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds());
+                                startActivity(ongoingIntent);
                             }
                         });
                     }
