@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0a0909"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -21,5 +22,12 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/panicButton"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:src="@drawable/images"-->
+        <!--/>-->
 
 </android.support.v4.widget.DrawerLayout>
