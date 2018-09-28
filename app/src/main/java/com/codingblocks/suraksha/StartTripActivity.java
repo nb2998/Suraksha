@@ -38,20 +38,17 @@ public class StartTripActivity extends AppCompatActivity {
         tvTime = findViewById(R.id.tvTime);
         Button btnEstimate = findViewById(R.id.btnEstimate);
         final LatLongs[] items = new LatLongs[]{
-                new LatLongs("Block C", "28.674388", "77.087626"),
-                new LatLongs("B3 Block", "28.664372", "77.101573"),
-                new LatLongs("A1 Block", "28.676083", "77.099084"),
-                new LatLongs("Block 12", "28.662433", "77.090228"),
-                new LatLongs("Block 4", "28.665031", "77.010524"),
-                new LatLongs("A4 Block", "28.673127", "77.111944"),
-                new LatLongs("Guru Harkishan Nagar", "28.673767", "77.084005"),
-                new LatLongs("B4 Block", "28.666161", "77.087861"),
-                new LatLongs("State Bank Nagar", "28.661416", "77.095807")
+                new LatLongs("Paschim Vihar", "28.677050", "77.112091"),
+                new LatLongs("Karol Bagh", "28.654850", "77.187111"),
+                new LatLongs("Punjabi Bagh", "28.668489", "77.128632"),
+                new LatLongs("Rohini", "28.712700", "77.076668"),
+                new LatLongs("Preet Vihar", "28.631410", "77.288230"),
+                new LatLongs("Vaishali", "28.702420", "77.137380")
 
         };
 
         String[] locations = new String[]{
-                "Block C", "B3 Block", "A1 Block", "Block 12", "Block 4", "A4 Block", "Guru Harkishan Nagar", "B4 Block", "State Bank Nagar"
+                "Paschim Vihar", "Karol Bagh", "Punjabi Bagh", "Rohini", "Preet Vihar", "Vaishali"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, locations);
         startDropdown.setAdapter(adapter);
