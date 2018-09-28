@@ -201,6 +201,9 @@ public class MainActivityNav extends AppCompatActivity
 
         }else if(id==R.id.end_trip){
 
+            Intent i=new Intent(getBaseContext(),EndTripActivity.class);
+            startActivity(i);
+
 
 
         }
