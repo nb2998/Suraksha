@@ -211,6 +211,11 @@ public class MainActivityNav extends AppCompatActivity
 
         } else if (id == R.id.police) {
 
+
+
+
+
+
         }else if(id==R.id.start_trip){
 
             Intent i=new Intent(getBaseContext(),StartTripActivity.class);

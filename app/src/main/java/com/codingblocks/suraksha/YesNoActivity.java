@@ -2,8 +2,10 @@ package com.codingblocks.suraksha;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -69,10 +71,43 @@ public class YesNoActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.no_button:
 
-                Intent i=new Intent(getApplicationContext(),SensorActivity.class);
-                startActivity(i);
-
-                break;
+//                Intent i=new Intent(getApplicationContext(),SensorActivity.class);
+//                startActivity(i);
+                final Runnable r = new Runnable() {
+                    public void run() {
+                        Handler handler = new Handler();
+                        handler.postDelayed(this, 10000);
+                        gameOver();
+                    }
+                };
+              r.run();
         }
+    }
+
+
+    private void gameOver() {
+
+        String smsNumber = String.format("smsto: %s",
+                "8851735067");
+
+
+//        String smsNumber = String.format("smsto: %s",
+//                );
+
+
+        String sms = "I am in trouble . Please help me out! My current location is :- \n\n https://www.google.com/maps/@28.7298838,76.7325634,11z";
+        // Create the intent.
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+        // Set the data for the intent as the phone number.
+        smsIntent.setData(Uri.parse(smsNumber));
+        // Add the message (sms) with the key ("sms_body").
+        smsIntent.putExtra("sms_body", sms);
+        // If package resolves (target app installed), send intent.
+        if (smsIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(smsIntent);
+        } else {
+            Log.d("TAG", "Can't resolve app for ACTION_SENDTO Intent");
+        }
+
     }
 }
