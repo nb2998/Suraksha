@@ -1,5 +1,9 @@
 package com.codingblocks.suraksha.Models;
 
-class Route {
+public class Route {
     Summary summary;
+
+    public Summary getSummary() {
+        return summary;
+    }
 }

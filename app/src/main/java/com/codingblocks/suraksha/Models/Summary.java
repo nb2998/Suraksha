@@ -1,6 +1,6 @@
 package com.codingblocks.suraksha.Models;
 
-class Summary {
+public class Summary {
     private String lengthInMeters, travelTimeInSeconds, trafficDelayInSeconds, departureTime, arrivalTime;
 
     public String getLengthInMeters() {

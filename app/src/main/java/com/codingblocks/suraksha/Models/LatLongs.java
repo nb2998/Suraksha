@@ -8,4 +8,16 @@ public class LatLongs {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
 }
