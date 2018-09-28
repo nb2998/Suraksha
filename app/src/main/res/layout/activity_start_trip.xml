@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartTripActivity"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/spinnerStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_margin="5dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerDestination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_margin="5dp"/>
+
+    <EditText
+        android:id="@+id/etVehicleNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Enter Vehicle Number"/>
+
+    <EditText
+        android:id="@+id/etTransportMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Enter transportation mode"/>
+
+    <Button
+        android:id="@+id/btnEstimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Estimate Time"
+        android:layout_margin="5dp"/>
+
+</LinearLayout>
