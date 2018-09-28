@@ -50,7 +50,7 @@ public class YesNoActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.no_button:
 
-                Intent i=new Intent(getBaseContext(),SensorActivity.class);
+                Intent i=new Intent(getApplicationContext(),SensorActivity.class);
                 startActivity(i);
 
 

@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <Button
+        android:id="@+id/btnPanicWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_light"
+        android:text="Panic"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        />
+
+</FrameLayout>
