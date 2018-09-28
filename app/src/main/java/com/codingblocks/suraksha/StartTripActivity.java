@@ -35,6 +35,8 @@ public class StartTripActivity extends AppCompatActivity {
 
         final Spinner startDropdown = findViewById(R.id.spinnerStart);
         final Spinner endDropdown = findViewById(R.id.spinnerDestination);
+        final Spinner transportDropdown = findViewById(R.id.spinnerTransportMode);
+
         tvTime = findViewById(R.id.tvTime);
         Button btnEstimate = findViewById(R.id.btnEstimate);
         final LatLongs[] items = new LatLongs[]{
@@ -50,20 +52,28 @@ public class StartTripActivity extends AppCompatActivity {
         String[] locations = new String[]{
                 "Paschim Vihar", "Karol Bagh", "Punjabi Bagh", "Rohini", "Preet Vihar", "Vaishali"
         };
+
+        final String[] transportationModes = new String[]{
+                "Car/Auto", "Bus", "Rickshaw", "Walking"
+        };
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, locations);
         startDropdown.setAdapter(adapter);
         endDropdown.setAdapter(adapter);
 
+        ArrayAdapter<String> adapterTransport = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, transportationModes);
+        transportDropdown.setAdapter(adapterTransport);
+
         btnEstimate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fetchRouteDetails(getApplicationContext(), items[startDropdown.getSelectedItemPosition()].getLatitude()+","+items[startDropdown.getSelectedItemPosition()].getLongitude(), items[endDropdown.getSelectedItemPosition()].getLatitude()+","+items[endDropdown.getSelectedItemPosition()].getLongitude());
+                fetchRouteDetails(transportDropdown.getSelectedItemPosition(), getApplicationContext(), items[startDropdown.getSelectedItemPosition()].getLatitude()+","+items[startDropdown.getSelectedItemPosition()].getLongitude(), items[endDropdown.getSelectedItemPosition()].getLatitude()+","+items[endDropdown.getSelectedItemPosition()].getLongitude());
             }
         });
     }
 
 
-    public void fetchRouteDetails(Context context, String start, String end) {
+    public void fetchRouteDetails(final int transportMode, Context context, String start, String end) {
         String baseUrl = "https://api.tomtom.com/routing/1/calculateRoute/";
 //        String start="28.677050,77.112090:";
 //        String longitudes = "28.645380,77.203160";
@@ -99,11 +109,24 @@ public class StartTripActivity extends AppCompatActivity {
                                 Log.d(TAG, "run: "+routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds()+" seconds");
 
                                 Intent ongoingIntent = new Intent(StartTripActivity.this, OngoingTripActivity.class);
-                                ongoingIntent.putExtra(getString(R.string.estimated_time), routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds());
+                                String finalEstimationTime = getEstimationTime(transportMode, routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds());
+                                ongoingIntent.putExtra(getString(R.string.estimated_time), finalEstimationTime);
                                 startActivity(ongoingIntent);
                             }
                         });
                     }
                 });
+    }
+
+    private String getEstimationTime(int transportMode, String travelTimeInSeconds) {
+        if(transportMode == 0){
+            return travelTimeInSeconds;
+        } else if(transportMode == 1){
+            return String.valueOf(Integer.parseInt(travelTimeInSeconds)+1200);
+        } else if (transportMode==2){
+            return String.valueOf(Integer.parseInt(travelTimeInSeconds)+2400);
+        } else{
+            return String.valueOf(Integer.parseInt(travelTimeInSeconds)+6000);
+        }
     }
 }

@@ -36,7 +36,7 @@
             android:name=".EndTripActivity"
             android:label="@string/title_activity_end_trip"
             android:theme="@style/AppTheme.NoActionBar" />
-        >>>>>>> Stashed changes
+
         <activity
             android:name=".YesNoActivity"
             android:label="@string/title_activity_yes_no"

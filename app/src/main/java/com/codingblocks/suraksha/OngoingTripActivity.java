@@ -1,6 +1,8 @@
 package com.codingblocks.suraksha;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,7 +42,7 @@ public class OngoingTripActivity extends AppCompatActivity {
 
         Log.d("TAG", "onCreate: totalsecs "+totalSeconds);
 
-        int estimatedTimeInSecs = totalSeconds+ timeInSecs;
+        final int estimatedTimeInSecs = totalSeconds+ timeInSecs;
         Log.d("TAG", "onCreate: estimated  "+estimatedTimeInSecs);
 
         int finalHours = estimatedTimeInSecs / 3600;  // Be sure to use integer arithmetic
@@ -60,12 +62,19 @@ public class OngoingTripActivity extends AppCompatActivity {
         Log.d("TAG", "onCreate: "+currentTime.toString());
         Log.d("TAG", "onCreate: "+estimatedArrivalTime.toString());
 
+        Intent alarmIntent = new Intent(OngoingTripActivity.this, YesNoActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(OngoingTripActivity.this, 0,
+                alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + estimatedTimeInSecs*1000, pendingIntent);
+
         btnEndTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent alarmIntent = new Intent(OngoingTripActivity.this, MainActivity.class);
-//                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0,
-//                        alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                Intent endIntent = new Intent(OngoingTripActivity.this, YesNoActivity.class);
+                startActivity(endIntent);
             }
         });
     }

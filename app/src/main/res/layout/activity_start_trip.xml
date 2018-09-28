@@ -23,19 +23,20 @@
         android:spinnerMode="dropdown"
         android:layout_margin="5dp"/>
 
+    <Spinner
+        android:id="@+id/spinnerTransportMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_margin="5dp"/>
+
     <EditText
         android:id="@+id/etVehicleNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="Enter Vehicle Number"/>
-
-    <EditText
-        android:id="@+id/etTransportMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:hint="Enter transportation mode"/>
 
     <Button
         android:id="@+id/btnEstimate"
