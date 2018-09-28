@@ -23,5 +23,10 @@
     <string name="msg_location_service_started">Location Tracking Started</string>
     <string name="btn_label_refresh">Refresh</string>
     <string name="API">api_key</string>
+
     <string name="estimated_time">estimatedTime</string>
+
+    <string name="title_activity_end_trip">EndTripActivity</string>
+    <string name="title_activity_yes_no">YesNoActivity</string>
+
 </resources>

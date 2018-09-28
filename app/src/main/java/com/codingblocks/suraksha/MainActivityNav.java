@@ -18,6 +18,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -35,6 +36,7 @@ import android.media.MediaPlayer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codingblocks.suraksha.Models.Contact;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
@@ -50,6 +52,8 @@ public class MainActivityNav extends AppCompatActivity
     private static final String TAG = MainActivityNav.class.getSimpleName();
 
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
+
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
 
     private boolean mAlreadyStartedService = false;
     MediaPlayer mediaPlayer;
@@ -124,11 +128,16 @@ public class MainActivityNav extends AppCompatActivity
 
         Log.e(TAG, "sendSMS: --" + message);
 
-        PendingIntent pi = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivityNav.class), 0);
+//        PendingIntent pi = PendingIntent.getActivity(this, 0,
+//                new Intent(this, MainActivityNav.class), 0);
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNo, null, message, pi, null);
+        sms.sendTextMessage(phoneNo, null, message, null, null);
+//    }
+
+
+
     }
+
 
     private void playsound() {
 
@@ -176,8 +185,23 @@ public class MainActivityNav extends AppCompatActivity
 
         if (id == R.id.emergency_contact) {
 
+            Intent i=new Intent(getBaseContext(),Contact.class);
+            startActivity(i);
+
+
+
 
         } else if (id == R.id.police) {
+
+        }else if(id==R.id.start_trip){
+
+            Intent i=new Intent(getBaseContext(),StartTripActivity.class);
+            startActivity(i);
+
+
+        }else if(id==R.id.end_trip){
+
+
 
         }
 
@@ -398,22 +422,5 @@ public class MainActivityNav extends AppCompatActivity
     }
 
 
-    public void sendMESSAGE() {
 
-//        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest
-//                .Builder(MyWorker.class)
-//                .setInitialDelay(0, TimeUnit.SECONDS)
-//                .build();
-//
-////        PeriodicWorkRequest periodicWorkRequest=new PeriodicWorkRequest
-////                .Builder(MyWorker.class)
-////                .setPeriodStartTime(0L,2000)
-////                .build();
-//
-//
-//        WorkManager.getInstance().enqueue(oneTimeWorkRequest);
-//    }
-
-
-    }
 }

@@ -19,22 +19,28 @@
             android:name=".MainActivityNav"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".StartTripActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartTripActivity" />
 
         <!-- <service android:name=".LocationMonitoringService" /> -->
-        <activity android:name=".OngoingTripActivity"></activity>
+        <activity android:name=".OngoingTripActivity" />
+        <activity android:name=".Models.Contact" />
+
+        <!-- <service android:name=".LocationMonitoringService" /> -->
+        <activity
+            android:name=".EndTripActivity"
+            android:label="@string/title_activity_end_trip"
+            android:theme="@style/AppTheme.NoActionBar" />
+        >>>>>>> Stashed changes
+        <activity
+            android:name=".YesNoActivity"
+            android:label="@string/title_activity_yes_no"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
