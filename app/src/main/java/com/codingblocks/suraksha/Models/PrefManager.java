@@ -3,9 +3,7 @@ package com.codingblocks.suraksha.Models;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by anant bansal on 6/4/2017.
- */
+
 
 public class PrefManager {
 

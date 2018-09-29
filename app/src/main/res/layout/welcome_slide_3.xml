@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/bg_screen3"
+    android:background="@color/bg_screen4"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -13,13 +13,16 @@
 
         <ImageView
             android:layout_width="120dp"
+            android:src="@drawable/sms"
             android:layout_height="120dp"
             />
 
         <TextView
+
+            android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VP 3"
+            android:text="Message "
             android:textColor="@android:color/white"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -27,13 +30,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
-            android:text="Find nearby police station just by a click"
+            android:text="Send Your location to your emergency contact in case of emergency ."
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="16dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
 

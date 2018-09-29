@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/bg_screen2"
+    android:background="@color/bg_screen1"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,9 +13,11 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:src="@drawable/emergency"
              />
 
         <TextView
+            android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="EMERGENCY CONTACT"
@@ -26,13 +28,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
-            android:text="Get a fake call and get rid of annoying conversation"
+            android:text="Make an emergency call in case of any emergency . "
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="16dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
 
