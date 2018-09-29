@@ -1,5 +1,6 @@
 package com.codingblocks.suraksha.Models;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,6 +92,7 @@ public class Contact extends AppCompatActivity {
     class contactHolder extends RecyclerView.ViewHolder{
 
         TextView name,number;
+        CardView cardView;
         ImageView ivDelete;
 
         public contactHolder(View itemView) {
@@ -96,6 +100,7 @@ public class Contact extends AppCompatActivity {
             name= (TextView) itemView.findViewById(R.id.nameOf);
             number= (TextView) itemView.findViewById(R.id.numberOf);
             ivDelete= (ImageView) itemView.findViewById(R.id.ivDelete);
+//            cardView=itemView.findViewById(R.id.cardview);
         }
     }
     class Adapter extends RecyclerView.Adapter<contactHolder>{
@@ -135,6 +140,25 @@ public class Contact extends AppCompatActivity {
                     alertBox.show();
                 }
             });
+
+
+
+            holder.name.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("MissingPermission")
+                @Override
+                public void onClick(View v) {
+
+                    Log.e("TAG", "onClick12345: "+holder.number.toString());
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel://"+holder.number.toString()));//change the number
+                    startActivity(callIntent);
+
+                }
+            });
+
+
+
+
         }
 
         @Override
