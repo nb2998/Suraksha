@@ -20,10 +20,10 @@
             android:icon="@drawable/start"
             android:title="Start The Trip" />
 
-        <!--<item-->
-            <!--android:id="@+id/end_trip"-->
-            <!--android:icon="@drawable/end"-->
-            <!--android:title="End The Trip" />-->
+        <item
+            android:id="@+id/safe_unsafe"
+            android:icon="@drawable/start"
+            android:title="Check safety zones" />
 
 
     </group>
