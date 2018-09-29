@@ -30,7 +30,7 @@ public class OngoingTripActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int timeInSecs = Integer.valueOf(intent.getStringExtra(getString(R.string.estimated_time)));
-        tvTime.setText("Estimated time: "+Integer.valueOf(timeInSecs)/60+" minutes.");
+        tvTime.setText("Estimated time: \n"+Integer.valueOf(timeInSecs)/60+" minutes.");
 
         Calendar calendar = Calendar.getInstance();
         Date currentTime = calendar.getTime();
@@ -57,7 +57,7 @@ public class OngoingTripActivity extends AppCompatActivity {
         cal.set(Calendar.SECOND, finalSecs);
 
         Date estimatedArrivalTime = cal.getTime();
-        tvExactTime.setText(getString(R.string.estimated_time)+estimatedArrivalTime.getHours()+" : "+estimatedArrivalTime.getMinutes());
+        tvExactTime.setText(getString(R.string.estimated_time)+"\n"+estimatedArrivalTime.getHours()+" : "+estimatedArrivalTime.getMinutes());
 
         Log.d("TAG", "onCreate: "+currentTime.toString());
         Log.d("TAG", "onCreate: "+estimatedArrivalTime.toString());

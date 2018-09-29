@@ -40,7 +40,7 @@
         android:id="@+id/etVehicleNo"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_margin="5dp"
+        android:layout_margin="20dp"
         android:textColor="@android:color/white"
         android:textColorHint="#FEF7E8"
 

@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class YesNoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,6 +43,8 @@ public class YesNoActivity extends AppCompatActivity implements View.OnClickList
 
         yesbtn.setOnClickListener(this);
         nobtn.setOnClickListener(this);
+
+
 
     }
 
@@ -73,16 +77,30 @@ public class YesNoActivity extends AppCompatActivity implements View.OnClickList
 
 //                Intent i=new Intent(getApplicationContext(),SensorActivity.class);
 //                startActivity(i);
-                final Runnable r = new Runnable() {
+
+//                        Handler handler = new Handler();
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//                            handler.postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    gameOver();
+//                                }
+//                            },10000);
+//                        }
+
+                new Timer().schedule(new TimerTask() {
+                    @Override
                     public void run() {
-                        Handler handler = new Handler();
-                        handler.postDelayed(this, 10000);
                         gameOver();
                     }
-                };
-              r.run();
+                }, 10000);
+
+
+                    }
+
+
         }
-    }
+
 
 
     private void gameOver() {
