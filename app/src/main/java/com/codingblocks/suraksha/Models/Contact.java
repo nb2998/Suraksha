@@ -150,7 +150,7 @@ public class Contact extends AppCompatActivity {
 
                     Log.e("TAG", "onClick12345: "+holder.number.toString());
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel://"+holder.number.toString()));//change the number
+                    callIntent.setData(Uri.parse("tel://"+holder.number.getText().toString()));//change the number
                     startActivity(callIntent);
 
                 }

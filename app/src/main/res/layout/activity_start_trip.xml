@@ -41,17 +41,37 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="5dp"
+        android:textColor="@android:color/white"
         android:textColorHint="#FEF7E8"
 
         android:hint="Enter Vehicle Number"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
     <Button
         android:id="@+id/btnEstimate"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        android:layout_weight="2"
         android:layout_height="55dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
         android:background="#FEF7E8"
         android:text="Estimate Time" />
+
+        <ProgressBar
+            android:layout_marginTop="18dp"
+            android:id="@+id/progressbar"
+            android:visibility="invisible"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>

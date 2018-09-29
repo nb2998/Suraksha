@@ -30,5 +30,7 @@
     <string name="title_activity_yes_no">YesNoActivity</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="vehicle_number">Vehicle number</string>
+    <string name="transport_mode">Transportation mode</string>
 
 </resources>

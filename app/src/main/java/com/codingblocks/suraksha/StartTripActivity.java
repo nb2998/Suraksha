@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,15 +29,22 @@ public class StartTripActivity extends AppCompatActivity {
 
     private static final String TAG = "TAG";
     TextView tvTime;
+    EditText etVehicleNo;
+    Spinner transportDropdown;
+    ProgressBar p;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_trip);
 
+        etVehicleNo=findViewById(R.id.etVehicleNo);
         final Spinner startDropdown = findViewById(R.id.spinnerStart);
         final Spinner endDropdown = findViewById(R.id.spinnerDestination);
-        final Spinner transportDropdown = findViewById(R.id.spinnerTransportMode);
+        transportDropdown = findViewById(R.id.spinnerTransportMode);
+
+        p=findViewById(R.id.progressbar);
 
         tvTime = findViewById(R.id.tvTime);
         Button btnEstimate = findViewById(R.id.btnEstimate);
@@ -81,6 +90,7 @@ public class StartTripActivity extends AppCompatActivity {
         String apiKey = context.getString(R.string.api_key);
         String url = baseUrl+start+":"+end+json+apiKey;
 
+        p.setVisibility(View.VISIBLE);
         Log.d(TAG, "fetchRouteDetails: "+url);
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder()
@@ -91,6 +101,12 @@ public class StartTripActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call call, IOException e) {
 
+                        StartTripActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                p.setVisibility(View.INVISIBLE);
+                            }
+                        });
                     }
 
                     @Override
@@ -98,6 +114,13 @@ public class StartTripActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         String result1 = response.body().string();
                         String result = result1.replace("callback(", "");
+                        StartTripActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                p.setVisibility(View.INVISIBLE);
+                            }
+                        });
+
                         result = result.substring(0, result.length()-1);
                         final RouteDetails routeDetails = gson.fromJson(result, RouteDetails.class);
                         Log.d(TAG, "onResponse: "+routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds());
@@ -111,6 +134,10 @@ public class StartTripActivity extends AppCompatActivity {
                                 Intent ongoingIntent = new Intent(StartTripActivity.this, OngoingTripActivity.class);
                                 String finalEstimationTime = getEstimationTime(transportMode, routeDetails.getRoutes()[0].getSummary().getTravelTimeInSeconds());
                                 ongoingIntent.putExtra(getString(R.string.estimated_time), finalEstimationTime);
+
+
+                                ongoingIntent.putExtra(getString(R.string.vehicle_number),etVehicleNo.getText().toString());
+                                ongoingIntent.putExtra(getString(R.string.transport_mode), transportDropdown.getSelectedItem().toString());
                                 startActivity(ongoingIntent);
                             }
                         });

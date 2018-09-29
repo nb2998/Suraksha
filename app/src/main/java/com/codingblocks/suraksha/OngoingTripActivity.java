@@ -63,6 +63,8 @@ public class OngoingTripActivity extends AppCompatActivity {
         Log.d("TAG", "onCreate: "+estimatedArrivalTime.toString());
 
         Intent alarmIntent = new Intent(OngoingTripActivity.this, YesNoActivity.class);
+        alarmIntent.putExtra(getString(R.string.vehicle_number), getIntent().getStringExtra(getString(R.string.vehicle_number)));
+        alarmIntent.putExtra(getString(R.string.transport_mode), getIntent().getStringExtra(getString(R.string.transport_mode)));
         PendingIntent pendingIntent = PendingIntent.getActivity(OngoingTripActivity.this, 0,
                 alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -74,6 +76,8 @@ public class OngoingTripActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent endIntent = new Intent(OngoingTripActivity.this, YesNoActivity.class);
+                endIntent.putExtra(getString(R.string.vehicle_number), getIntent().getStringExtra(getString(R.string.vehicle_number)));
+                endIntent.putExtra(getString(R.string.transport_mode), getIntent().getStringExtra(getString(R.string.transport_mode)));
                 startActivity(endIntent);
             }
         });

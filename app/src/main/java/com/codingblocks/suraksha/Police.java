@@ -2,6 +2,7 @@ package com.codingblocks.suraksha;
 
 import android.Manifest;
 import android.animation.LayoutTransition;
+import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -48,12 +49,23 @@ public class Police extends RecyclerView.Adapter<Police.Viewholder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder viewholder, int i) {
+    public void onBindViewHolder(@NonNull final Viewholder viewholder, int i) {
 
         PoliceDetail p=policeDetails.get(i);
         viewholder.number.setText(p.getNumber());
         viewholder.name.setText(p.getPoliceStation());
         viewholder.imageView.setImageResource(R.drawable.police);
+
+        viewholder.name.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("MissingPermission")
+            @Override
+            public void onClick(View v) {
+                Log.e("TAG", "onClick12345: "+viewholder.number.toString());
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel://"+viewholder.number.getText().toString()));//change the number
+                context.startActivity(callIntent);
+            }
+        });
 
     }
 

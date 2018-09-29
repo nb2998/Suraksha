@@ -95,7 +95,18 @@ public class YesNoActivity extends AppCompatActivity implements View.OnClickList
 //                );
 
 
-        String sms = "I am in trouble . Please help me out! My current location is :- \n\n https://www.google.com/maps/@28.7298838,76.7325634,11z";
+        String sms = "I am in trouble. Please help me out! My current location is :- \n\n https://www.google.com/maps/@28.7298838,76.7325634,11z";
+        String vehicleNo = getIntent().getStringExtra(getString(R.string.vehicle_number));
+        String transportMode = getIntent().getStringExtra(getString(R.string.transport_mode));
+
+        if(transportMode.length()!=0){
+            sms+=" I last boarded in a "+transportMode+". ";
+        }
+
+        if(vehicleNo.length()>4){
+            sms+="The vehicle number was "+vehicleNo;
+        }
+
         // Create the intent.
         Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
         // Set the data for the intent as the phone number.
