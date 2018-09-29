@@ -57,7 +57,7 @@ public class OngoingTripActivity extends AppCompatActivity {
         cal.set(Calendar.SECOND, finalSecs);
 
         Date estimatedArrivalTime = cal.getTime();
-        tvExactTime.setText(getString(R.string.estimated_time)+ " - "+estimatedArrivalTime.getHours()+" : "+estimatedArrivalTime.getMinutes());
+        tvExactTime.setText(getString(R.string.estimated_time)+estimatedArrivalTime.getHours()+" : "+estimatedArrivalTime.getMinutes());
 
         Log.d("TAG", "onCreate: "+currentTime.toString());
         Log.d("TAG", "onCreate: "+estimatedArrivalTime.toString());

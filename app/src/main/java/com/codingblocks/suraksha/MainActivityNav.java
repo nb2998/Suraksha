@@ -202,19 +202,12 @@ public class MainActivityNav extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.emergency_contact) {
-
             Intent i=new Intent(getBaseContext(),Contact.class);
             startActivity(i);
 
-
-
-
-        } else if (id == R.id.police) {
-
-
-
-
-
+        } else if (id == R.id.safe_unsafe) {
+            Intent i=new Intent(getBaseContext(),SafeUnsafeActivity.class);
+            startActivity(i);
 
         }else if(id==R.id.start_trip){
 
@@ -222,13 +215,9 @@ public class MainActivityNav extends AppCompatActivity
             startActivity(i);
 
 
-        }else if(id==R.id.end_trip){
-
-            Intent i=new Intent(getBaseContext(),EndTripActivity.class);
+        }else if(id==R.id.police){
+            Intent i=new Intent(getBaseContext(),PoliceActivity.class);
             startActivity(i);
-
-
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
