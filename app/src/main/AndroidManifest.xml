@@ -46,7 +46,7 @@
 
         <!-- <service android:name=".LocationMonitoringService" /> -->
         <activity android:name=".OngoingTripActivity" />
-        <activity android:name=".Models.Contact" />
+        <activity android:name=".Contact" />
 
         <!-- <service android:name=".LocationMonitoringService" /> -->
         <activity

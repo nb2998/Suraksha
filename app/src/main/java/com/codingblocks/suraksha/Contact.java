@@ -1,4 +1,4 @@
-package com.codingblocks.suraksha.Models;
+package com.codingblocks.suraksha;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -23,10 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codingblocks.suraksha.ContactDataBase;
-
 import com.codingblocks.suraksha.Models.AddedContacts;
-import com.codingblocks.suraksha.R;
 //import com.halfdotfull.panchi_app.Services.MessageService;
 
 import java.util.ArrayList;
@@ -35,12 +33,13 @@ public class Contact extends AppCompatActivity {
     RecyclerView mRecyclerView;
     ArrayList<AddedContacts> list;
     ContactDataBase db;
-    Button addContact;
+//    Button addContact;
     String number;
     int serial;
     String name;
     Adapter adapter;
     SharedPreferences sharedpreferences;
+    FloatingActionButton fabAddButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class Contact extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
 
         sharedpreferences=getSharedPreferences("panchi", Context.MODE_PRIVATE);
-        addContact= (Button) findViewById(R.id.AddContact);
+        fabAddButton= findViewById(R.id.fab_add_contact);
         mRecyclerView= (RecyclerView) findViewById(R.id.Recycle);
         list=new ArrayList<>();
         db=new ContactDataBase(Contact.this);
@@ -58,7 +57,7 @@ public class Contact extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        addContact.setOnClickListener(new View.OnClickListener() {
+        fabAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
